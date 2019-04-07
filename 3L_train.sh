@@ -18,5 +18,5 @@ python 3L_squad.py \
   --output_dir=$OUTPUT_DIR \
   --version_2_with_negative=True
 
-TODAY=`date '+%d-%m-%Y_%H:%M:%S'`
+TODAY=`date '+%H-%M-%S_%d-%m-%Y'`
 python evaluate-v2.0.py squad/dev-v2.0.json output/predictions.json > eval/$TODAY
