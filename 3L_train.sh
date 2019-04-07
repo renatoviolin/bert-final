@@ -1,6 +1,6 @@
-export BERT_BASE_DIR=/home/renato/BERT_Squad/uncased_L-12_H-768_A-12
-export SQUAD_DIR=/home/renato/BERT_Squad/squad
-export OUTPUT_DIR=/home/renato/BERT_Squad/output
+export BERT_BASE_DIR=/home/renato/bert-final/uncased_L-12_H-768_A-12
+export SQUAD_DIR=/home/renato/bert-final/squad
+export OUTPUT_DIR=/home/renato/bert-final/output
 
 python 3L_squad.py \
   --vocab_file=$BERT_BASE_DIR/vocab.txt \
