@@ -610,21 +610,21 @@ def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
     keep_prob = 0.6
 
   W1 = tf.get_variable(
-    "cls/squad/output_weights1", [768, hidden_size],
+    "cls/squad/output_weights1", [512, hidden_size],
     initializer=tf.truncated_normal_initializer(stddev=0.02))
 
   b1 = tf.get_variable(
-      "cls/squad/output_bias1", [768], initializer=tf.zeros_initializer())
+      "cls/squad/output_bias1", [512], initializer=tf.zeros_initializer())
 
   W2 = tf.get_variable(
-      "cls/squad/output_weights2", [512, 768],
+      "cls/squad/output_weights2", [384, 512],
       initializer=tf.truncated_normal_initializer(stddev=0.02))
 
   b2 = tf.get_variable(
-      "cls/squad/output_bias2", [512], initializer=tf.zeros_initializer())
+      "cls/squad/output_bias2", [384], initializer=tf.zeros_initializer())
 
   W3 = tf.get_variable(
-      "cls/squad/output_weights3", [2, 512],
+      "cls/squad/output_weights3", [2, 384],
       initializer=tf.truncated_normal_initializer(stddev=0.02))
 
   b3 = tf.get_variable(
@@ -646,8 +646,6 @@ def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
   
   logits = tf.matmul(logits, W3, transpose_b=True)
   logits = tf.nn.bias_add(logits, b3)
-  logits = tf.nn.relu(logits)
-  logits = tf.nn.dropout(logits, keep_prob)
 
   logits = tf.reshape(logits, [batch_size, seq_length, 2])
   logits = tf.transpose(logits, [2, 0, 1])
