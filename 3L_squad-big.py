@@ -607,7 +607,7 @@ def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
 
   keep_prob = 1.0
   if is_training:
-    keep_prob = 0.6
+    keep_prob = 0.8
 
   W1 = tf.get_variable(
     "cls/squad/output_weights1", [512, hidden_size],
